@@ -85,7 +85,7 @@ export default function App() {
             >
               {tabs.map((t) => {
                 const isActive = activeTab === t.id;
-                const IconComponent = t.icon;
+                const Icon = t.icon;
                 return (
                   <button
                     key={t.id}
@@ -109,13 +109,14 @@ export default function App() {
                       transition: 'all 0.3s ease'
                     }}
                   >
-                    <span>{t.emoji}</span>
+                    <Icon size={16} color={isActive ? '#ffd700' : '#ff85a1'} />
                     <span>{t.label}</span>
                   </button>
                 );
               })}
             </nav>
           </header>
+
 
           {/* Active Feature Experience Container */}
           <main style={{ marginTop: '30px', padding: '0 16px' }}>
