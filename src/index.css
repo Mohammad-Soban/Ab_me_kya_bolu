@@ -1,13 +1,350 @@
-body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+/* =========================================================
+   ROYAL ROMANTIC DESIGN SYSTEM - FOR KHUSHI 💖
+   ========================================================= */
+
+:root {
+  --bg-dark-1: #0a0314;
+  --bg-dark-2: #160826;
+  --bg-dark-3: #260d3d;
+  --bg-overlay: rgba(18, 6, 32, 0.75);
+
+  --gold-1: #ffd700;
+  --gold-2: #f3cf7a;
+  --gold-3: #d4af37;
+  --gold-4: #aa7c11;
+  --gold-dark: #6e4e0b;
+  --gold-light: #fff8db;
+  --gold-gradient: linear-gradient(135deg, #ffe082 0%, #d4af37 50%, #aa7c11 100%);
+  --gold-shimmer: linear-gradient(90deg, #d4af37 0%, #fff2a3 50%, #d4af37 100%);
+
+  --rose-100: #fff0f3;
+  --rose-200: #ffccd5;
+  --rose-300: #ffb3c1;
+  --rose-400: #ff758f;
+  --rose-500: #ff4d6d;
+  --rose-600: #c9184a;
+  --rose-dark: #590d22;
+
+  --glass-bg: rgba(30, 12, 48, 0.65);
+  --glass-border: rgba(212, 175, 55, 0.35);
+  --glass-glow: 0 8px 32px 0 rgba(212, 175, 55, 0.2);
+
+  --font-royal: 'Cinzel', serif;
+  --font-decorative: 'Cinzel Decorative', cursive;
+  --font-serif: 'Playfair Display', serif;
+  --font-script: 'Great Vibes', cursive;
+  --font-hand: 'Caveat', cursive;
+  --font-sans: 'Outfit', 'Montserrat', sans-serif;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  -webkit-font-smoothing: antialiased;
+}
+
+html, body {
+  width: 100%;
+  min-height: 100vh;
+  background-color: var(--bg-dark-1);
+  color: #fff;
+  font-family: var(--font-sans);
+  overflow-x: hidden;
+  user-select: none;
+}
+
+/* Custom Luxury Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-track {
+  background: var(--bg-dark-1);
+}
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(to bottom, var(--gold-3), var(--rose-500));
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--gold-1);
+}
+
+/* Typography Utilities */
+.font-royal { font-family: var(--font-royal); }
+.font-decorative { font-family: var(--font-decorative); }
+.font-serif { font-family: var(--font-serif); }
+.font-script { font-family: var(--font-script); }
+.font-hand { font-family: var(--font-hand); }
+
+.text-gold-gradient {
+  background: linear-gradient(135deg, #fff3b0 0%, #ffd700 35%, #e6a100 70%, #fff8db 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  text-shadow: 0 0 20px rgba(255, 215, 0, 0.4);
+}
+
+.text-rose-gradient {
+  background: linear-gradient(135deg, #ffffff 0%, #ff85a1 50%, #ff4d6d 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.gold-glow {
+  box-shadow: 0 0 25px rgba(212, 175, 55, 0.4), inset 0 0 15px rgba(212, 175, 55, 0.2);
+}
+
+.rose-glow {
+  box-shadow: 0 0 25px rgba(255, 77, 109, 0.4), inset 0 0 15px rgba(255, 77, 109, 0.2);
+}
+
+/* Shimmer Animation */
+@keyframes goldShine {
+  0% { background-position: -200% center; }
+  100% { background-position: 200% center; }
+}
+
+.animate-shimmer {
+  background: linear-gradient(90deg, rgba(255,215,0,0.1) 0%, rgba(255,215,0,0.6) 50%, rgba(255,215,0,0.1) 100%);
+  background-size: 200% auto;
+  animation: goldShine 3s infinite linear;
+}
+
+@keyframes pulseGlow {
+  0%, 100% {
+    box-shadow: 0 0 15px rgba(212, 175, 55, 0.4), 0 0 30px rgba(255, 77, 109, 0.2);
+    transform: scale(1);
+  }
+  50% {
+    box-shadow: 0 0 30px rgba(212, 175, 55, 0.7), 0 0 50px rgba(255, 77, 109, 0.5);
+    transform: scale(1.02);
+  }
+}
+
+.animate-pulse-glow {
+  animation: pulseGlow 2.5s infinite ease-in-out;
+}
+
+@keyframes floatSlow {
+  0%, 100% { transform: translateY(0px) rotate(0deg); }
+  50% { transform: translateY(-8px) rotate(1deg); }
+}
+
+.animate-float {
+  animation: floatSlow 4s infinite ease-in-out;
+}
+
+@keyframes gentleSpin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+.animate-spin-slow {
+  animation: gentleSpin 25s infinite linear;
+}
+
+/* Glassmorphic Panel */
+.glass-card {
+  background: var(--glass-bg);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid var(--glass-border);
+  border-radius: 20px;
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.6), inset 0 1px 0 rgba(255, 255, 255, 0.1);
+}
+
+.glass-card-interactive {
+  transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+}
+.glass-card-interactive:hover {
+  transform: translateY(-4px);
+  border-color: rgba(255, 215, 0, 0.6);
+  box-shadow: 0 20px 40px rgba(212, 175, 55, 0.25);
+}
+
+/* Golden Buttons */
+.btn-gold-primary {
+  background: linear-gradient(135deg, #ffd700 0%, #d4af37 40%, #b8860b 100%);
+  color: #1a0826;
+  font-family: var(--font-royal);
+  font-weight: 700;
+  letter-spacing: 1.5px;
+  padding: 14px 36px;
+  border-radius: 50px;
+  border: 2px solid #fff5b8;
+  cursor: pointer;
+  box-shadow: 0 10px 30px rgba(212, 175, 55, 0.4), inset 0 2px 4px rgba(255, 255, 255, 0.6);
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+}
+
+.btn-gold-primary:hover {
+  transform: scale(1.05) translateY(-2px);
+  box-shadow: 0 15px 40px rgba(255, 215, 0, 0.7), inset 0 2px 4px rgba(255, 255, 255, 0.9);
+}
+
+.btn-gold-primary:active {
+  transform: scale(0.98);
+}
+
+.btn-outline-gold {
+  background: rgba(30, 10, 45, 0.7);
+  color: #f3cf7a;
+  font-family: var(--font-royal);
+  font-weight: 600;
+  letter-spacing: 1px;
+  padding: 12px 28px;
+  border-radius: 50px;
+  border: 1.5px solid rgba(212, 175, 55, 0.5);
+  cursor: pointer;
+  transition: all 0.3s ease;
+  backdrop-filter: blur(8px);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+}
+
+.btn-outline-gold:hover {
+  background: rgba(212, 175, 55, 0.2);
+  border-color: #ffd700;
+  color: #fff;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(212, 175, 55, 0.3);
+}
+
+/* Ornate filigree divider */
+.filigree-divider {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 15px;
+  margin: 20px 0;
+  color: var(--gold-3);
+  font-size: 1.2rem;
+}
+
+.filigree-divider::before,
+.filigree-divider::after {
+  content: '';
+  height: 1px;
+  flex: 1;
+  max-width: 150px;
+  background: linear-gradient(90deg, transparent, var(--gold-3), transparent);
+}
+
+/* =========================================================
+   3D GOLDEN GATES SYSTEM
+   ========================================================= */
+.gate-perspective-container {
+  perspective: 1400px;
+  perspective-origin: center center;
+  width: 100vw;
+  height: 100vh;
+  position: relative;
+  overflow: hidden;
+  background: radial-gradient(circle at 50% 35%, #34124e 0%, #190729 45%, #08020f 95%);
+}
+
+.gate-wing {
+  position: absolute;
+  top: 0;
+  width: 50%;
+  height: 100%;
+  transition: transform 3.2s cubic-bezier(0.22, 1, 0.36, 1);
+  transform-style: preserve-3d;
+  will-change: transform;
+  z-index: 10;
+}
+
+.gate-wing-left {
+  left: 0;
+  transform-origin: left center;
+}
+
+.gate-wing-right {
+  right: 0;
+  transform-origin: right center;
+}
+
+.gate-wing-left.gate-open {
+  transform: rotateY(-110deg) translateZ(-40px);
+}
+
+.gate-wing-right.gate-open {
+  transform: rotateY(110deg) translateZ(-40px);
+}
+
+/* Golden Gate Frame and Filigree styling */
+.gate-mesh {
+  width: 100%;
+  height: 100%;
+  background: 
+    radial-gradient(ellipse at 50% 50%, rgba(255, 215, 0, 0.12) 0%, transparent 70%),
+    linear-gradient(135deg, rgba(20, 6, 30, 0.95), rgba(40, 15, 60, 0.92));
+  border: 4px solid var(--gold-3);
+  box-shadow: 
+    inset 0 0 60px rgba(212, 175, 55, 0.4),
+    0 0 35px rgba(0, 0, 0, 0.9);
+  position: relative;
+  overflow: hidden;
+}
+
+.gate-wing-left .gate-mesh {
+  border-right: 5px solid #ffe082;
+  border-radius: 40px 0 0 0;
+}
+
+.gate-wing-right .gate-mesh {
+  border-left: 5px solid #ffe082;
+  border-radius: 0 40px 0 0;
+}
+
+/* Light rays behind opening gates */
+.sanctuary-light-burst {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 100vw;
+  height: 100vh;
+  background: radial-gradient(circle at center, rgba(255, 235, 160, 0.7) 0%, rgba(255, 117, 143, 0.4) 30%, rgba(26, 9, 43, 0.95) 75%);
+  opacity: 0;
+  transition: opacity 2s ease, transform 3.5s cubic-bezier(0.16, 1, 0.3, 1);
+  pointer-events: none;
+  z-index: 5;
+}
+
+.sanctuary-light-burst.active {
+  opacity: 1;
+  transform: translate(-50%, -50%) scale(1.15);
+}
+
+/* Golden Seal in gate center */
+.gate-central-lock {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 25;
+  transition: all 1.2s cubic-bezier(0.4, 0, 0.2, 1);
+  pointer-events: auto;
+}
+
+.gate-central-lock.unlocked {
+  transform: translate(-50%, -50%) scale(1.4);
+  opacity: 0;
+  pointer-events: none;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .btn-gold-primary {
+    padding: 12px 24px;
+    font-size: 0.95rem;
+  }
 }
